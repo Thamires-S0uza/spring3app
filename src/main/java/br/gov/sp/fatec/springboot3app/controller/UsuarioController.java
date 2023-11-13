@@ -1,4 +1,5 @@
 package br.gov.sp.fatec.springboot3app.controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,31 +11,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.gov.sp.fatec.springboot3app.entity.Vocabulo;
-import br.gov.sp.fatec.springboot3app.service.VocabuloService;
+import br.gov.sp.fatec.springboot3app.entity.Usuario;
+import br.gov.sp.fatec.springboot3app.service.IUsuarioService;
 
 @RestController
-@RequestMapping(value = "/vocabulo")
+@RequestMapping(value = "/usuario")
 @CrossOrigin
-public class VocabuloController {
+public class UsuarioController {
 
     @Autowired
-    private VocabuloService service;
-
+    private IUsuarioService service;
+    
     @GetMapping
-    public List<Vocabulo> todosVocabulos() {
-        return service.todosVocabulos();
+    public List<Usuario> todosUsuarios() {
+        return service.buscarTodosUsuarios();
     }
 
     @PostMapping
-    public Vocabulo novoVocabulo(@RequestBody Vocabulo vocabulo) {
-        return service.novoVocabulo(vocabulo);
+    public Usuario novoUsuario(@RequestBody Usuario usuario) {
+        return service.novoUsuario(usuario);
     }
 
-    @GetMapping(value = "/{termo}/{versao}")
-    public List<Vocabulo> buscarPorTermoEVersao(@PathVariable("termo") String termo, @PathVariable("versao") Integer versao) {
-        return service.buscarPorTermoEVersao(termo, versao);
+    @GetMapping(value = "/{id}")
+    public Usuario buscarPorId(@PathVariable("id") Long id) {
+        return service.buscarUsuarioPorId(id);
     }
-
     
 }

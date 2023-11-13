@@ -9,8 +9,9 @@ import br.gov.sp.fatec.springboot3app.entity.Vocabulo;
 
 public interface VocabuloRepository extends JpaRepository<Vocabulo, Long>{
 
- public List<Vocabulo> findByTermoContainsAndVersao(String termo, Integer versao);
+    public List<Vocabulo> findByTermoContainsAndVersao(String termo, Integer versao);
     
- @Query("select v from Vocabulo v where v.termo like %:termo% and v.versao = :versao")
- public List<Vocabulo> buscarPorTermoEVersao(String termo, Integer versao);
+    @Query("select v from Vocabulo v where v.termo like %:termo% and v.versao = :versao")
+    public List<Vocabulo> buscarPorTermoEVersao(String termo, Integer versao);
+
 }

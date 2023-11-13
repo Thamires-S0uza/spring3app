@@ -12,19 +12,20 @@ import br.gov.sp.fatec.springboot3app.repository.VocabuloRepository;
 @Service
 public class VocabuloService {
     
- @Autowired
- private VocabuloRepository vocabuloRepo;
+    @Autowired
+    private VocabuloRepository vocabuloRepo;
 
- public Vocabulo novoVocabulo(Vocabulo vocabulo) {
-  vocabulo.setDataHoraCadastro(LocalDateTime.now());
-  return vocabuloRepo.save(vocabulo);
- }
+    public Vocabulo novoVocabulo(Vocabulo vocabulo) {
+        vocabulo.setDataHoraCadastro(LocalDateTime.now());
+        return vocabuloRepo.save(vocabulo);
+    }
 
- public List<Vocabulo> todosVocabulos() {
-  return vocabuloRepo.findAll();
- }
+    public List<Vocabulo> todosVocabulos() {
+        return vocabuloRepo.findAll();
+    }
 
- public List<Vocabulo> buscarPorTermoEVersao(String termo, Integer versao) {
-  return vocabuloRepo.buscarPorTermoEVersao(termo, versao);
- }
+    public List<Vocabulo> buscarPorTermoEVersao(String termo, Integer versao) {
+        return vocabuloRepo.buscarPorTermoEVersao(termo, versao);
+    }
+
 }
